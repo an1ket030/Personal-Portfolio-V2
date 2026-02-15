@@ -1,0 +1,174 @@
+/* ── Scroll Progress Bar ── */
+.progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gb-light), var(--gbc-teal), var(--gbc-purple));
+    z-index: calc(var(--z-nav) + 1);
+    transition: width 100ms linear;
+    box-shadow: 0 0 8px rgba(139, 172, 15, 0.4);
+}
+
+/* ── Floating Nav ── */
+.nav {
+    position: fixed;
+    right: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+    z-index: var(--z-nav);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navVisible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* World Badge */
+.worldBadge {
+    background: rgba(26, 26, 46, 0.9);
+    border: 1px solid rgba(139, 172, 15, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    margin-bottom: var(--space-1);
+}
+
+.worldLabel {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.45rem;
+    color: var(--gbc-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Dots Container */
+.dots {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 172, 15, 0.12);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+}
+
+/* Individual Dot */
+.dot {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+}
+
+.dot:hover {
+    background: rgba(139, 172, 15, 0.08);
+}
+
+.dotActive {
+    background: rgba(139, 172, 15, 0.12) !important;
+}
+
+.dotIcon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(139, 172, 15, 0.15);
+    transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+    flex-shrink: 0;
+}
+
+.dotActive .dotIcon {
+    border-color: var(--gb-light);
+    box-shadow: 0 0 8px rgba(139, 172, 15, 0.25);
+}
+
+.dotLabel {
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.55rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: labelFade 0.2s ease-out;
+}
+
+.dotActive .dotLabel {
+    color: var(--gb-lightest);
+}
+
+@keyframes labelFade {
+    from {
+        opacity: 0;
+        transform: translateX(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scroll to Top */
+.topBtn {
+    margin-top: var(--space-1);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 172, 15, 0.12);
+    border-radius: var(--radius-sm);
+    color: var(--gb-dark);
+    cursor: pointer;
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.7rem;
+    transition: all var(--duration-fast);
+}
+
+.topBtn:hover {
+    color: var(--gb-light);
+    border-color: rgba(139, 172, 15, 0.3);
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .nav {
+        right: var(--space-2);
+    }
+
+    .dotLabel {
+        display: none !important;
+    }
+
+    .dots {
+        padding: var(--space-1);
+    }
+
+    .dot {
+        padding: 4px;
+    }
+
+    .dotIcon {
+        width: 18px;
+        height: 18px;
+    }
+}

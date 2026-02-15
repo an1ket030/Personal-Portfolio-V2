@@ -1,0 +1,135 @@
+.boot {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-boot);
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+/* ── Screen Frame (like a real Game Boy) ── */
+.screenFrame {
+    position: relative;
+    width: 320px;
+    height: 288px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 4px #2a2a3a,
+        0 0 0 6px #1a1a2e,
+        0 0 60px rgba(139, 172, 15, 0.1),
+        inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* ── CRT Overlay ── */
+.crtOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent 0px,
+            transparent 1px,
+            rgba(0, 0, 0, 0.08) 1px,
+            rgba(0, 0, 0, 0.08) 2px);
+    mix-blend-mode: multiply;
+}
+
+.crtOverlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 50%,
+            rgba(0, 0, 0, 0.25) 100%);
+}
+
+/* ── Skip Hint ── */
+.skipHint {
+    text-align: center;
+}
+
+.skipHint span {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: rgba(139, 172, 15, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ── Power Indicator ── */
+.powerIndicator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    position: absolute;
+    bottom: var(--space-6);
+    left: var(--space-6);
+}
+
+.powerIndicator span {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.45rem;
+    color: rgba(155, 188, 15, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.powerDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.powerDot.powerOn {
+    background: #4caf50;
+    box-shadow: 0 0 8px #4caf50, 0 0 16px rgba(76, 175, 80, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+    .screenFrame {
+        width: 280px;
+        height: 252px;
+    }
+}
+
+@media (min-width: 768px) {
+    .screenFrame {
+        width: 400px;
+        height: 360px;
+    }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .boot {
+        display: none;
+    }
+}

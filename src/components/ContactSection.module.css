@@ -1,0 +1,381 @@
+.contact {
+    background: linear-gradient(180deg, var(--hw-background), #0c0c20, #0a0a18);
+    padding-bottom: 0 !important;
+}
+
+/* ── Game Over ── */
+.gameOver {
+    text-align: center;
+    margin-bottom: var(--space-4);
+}
+
+.gameOverText {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: var(--gbc-red);
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 10px rgba(224, 60, 40, 0.6),
+        0 0 30px rgba(224, 60, 40, 0.3),
+        0 4px 0 #8a1a10;
+    animation: gameOverPulse 2s ease-in-out infinite;
+}
+
+.gameOverSub {
+    margin-top: var(--space-2);
+}
+
+.scoreText {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.6rem;
+    color: var(--gbc-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes gameOverPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* ── Continue Prompt ── */
+.continuePrompt {
+    text-align: center;
+    margin-bottom: var(--space-5);
+}
+
+.continueText {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--color-text-pixel);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+}
+
+.continueOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+}
+
+.optionActive {
+    color: var(--gb-lightest);
+    text-shadow: 0 0 8px rgba(155, 188, 15, 0.6);
+}
+
+.optionInactive {
+    color: var(--gb-dark);
+}
+
+/* ── Insert Coin ── */
+.insertCoin {
+    text-align: center;
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.65rem;
+    color: var(--gb-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-6);
+    animation: blink 1.5s steps(2) infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ── Coin Slot Animation ── */
+.coinSlot {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+    perspective: 200px;
+}
+
+.coin {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+    border-radius: 50%;
+    border: 2px solid #d97706;
+    animation: coinDrop 0.8s ease-in forwards;
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+}
+
+@keyframes coinDrop {
+    0% {
+        transform: translateY(-60px) rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translateY(0) rotateY(360deg) scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(-8px) rotateY(540deg) scale(0.9);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(10px) rotateY(720deg) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ── Form ── */
+.form {
+    max-width: 560px;
+    margin: 0 auto var(--space-7);
+    padding: var(--space-5);
+    background: linear-gradient(145deg, rgba(44, 44, 62, 0.4), rgba(26, 26, 46, 0.6));
+    border: 2px solid rgba(139, 172, 15, 0.15);
+    border-radius: var(--radius-lg);
+}
+
+.formHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid rgba(139, 172, 15, 0.1);
+}
+
+.formTitle {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.65rem;
+    color: var(--color-text-pixel);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.formCredits {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.55rem;
+    color: var(--gbc-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    font-size: 0.85rem;
+    margin-top: var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.submitSuccess {
+    background: linear-gradient(145deg, #22c55e, #16a34a) !important;
+    border-color: #15803d !important;
+}
+
+.errorMsg {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.65rem;
+    color: var(--gbc-red);
+    text-align: center;
+    margin-top: var(--space-3);
+    text-transform: uppercase;
+}
+
+.successMsg {
+    text-align: center;
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: var(--radius-sm);
+    animation: successPop 0.4s ease-out;
+}
+
+.successMsg span {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.55rem;
+    color: #4ade80;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes successPop {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ── Social Links ── */
+.socials {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.socialsLabel {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.6rem;
+    color: var(--gb-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: var(--space-4);
+}
+
+.socialLinks {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+}
+
+.socialItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    transition: transform var(--duration-fast) var(--ease-bounce);
+}
+
+.socialItem:hover {
+    transform: translateY(-6px);
+}
+
+.socialIcon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139, 172, 15, 0.06);
+    border: 2px solid rgba(139, 172, 15, 0.15);
+    border-radius: var(--radius-md);
+    transition: border-color var(--duration-fast),
+        box-shadow var(--duration-fast),
+        background var(--duration-fast);
+}
+
+.socialItem:hover .socialIcon {
+    border-color: var(--gb-light);
+    box-shadow: 0 0 16px rgba(139, 172, 15, 0.15);
+    background: rgba(139, 172, 15, 0.08);
+}
+
+.socialName {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Footer ── */
+.footer {
+    border-top: 1px solid rgba(139, 172, 15, 0.08);
+    padding: var(--space-6) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.credits {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.creditsTitle {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.6rem;
+    color: var(--gb-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-1);
+}
+
+.creditLine {
+    color: var(--color-text-secondary);
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.8rem;
+}
+
+.konami {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.konami span {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: rgba(139, 172, 15, 0.15);
+    letter-spacing: 1px;
+}
+
+.konamiHint {
+    font-size: 0.45rem !important;
+    color: rgba(139, 172, 15, 0.1) !important;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .form {
+        padding: var(--space-3);
+        margin-bottom: var(--space-5);
+    }
+
+    .formHeader {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+
+    .socialLinks {
+        gap: var(--space-3);
+    }
+
+    .socialIcon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .footer {
+        padding: var(--space-4) 0;
+    }
+}

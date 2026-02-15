@@ -1,0 +1,637 @@
+.skills {
+    background: linear-gradient(180deg, var(--hw-background), #0e0e24, var(--hw-background));
+}
+
+/* ── Stats Card ── */
+.statsCard {
+    background: linear-gradient(145deg, rgba(44, 44, 62, 0.5), rgba(26, 26, 46, 0.7));
+    border: 2px solid rgba(139, 172, 15, 0.15);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-7);
+}
+
+.statsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-5);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.className {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.55rem, 1.5vw, 0.75rem);
+    color: var(--color-text-pixel);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.level {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.65rem;
+    color: var(--gbc-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* XP Counter */
+.xpCounter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(139, 172, 15, 0.2);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+}
+
+.xpLabel {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.xpValue {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: var(--gbc-gold);
+    font-variant-numeric: tabular-nums;
+}
+
+.statBars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+/* Rarity Legend */
+.rarityLegend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(139, 172, 15, 0.08);
+}
+
+.rarityDot {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px var(--space-2);
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+/* ── Rarity Colors ── */
+.rarity_common {
+    --rarity-color: #8a8a8a;
+}
+
+.rarity_uncommon {
+    --rarity-color: #4ade80;
+}
+
+.rarity_rare {
+    --rarity-color: #38bdf8;
+}
+
+.rarity_epic {
+    --rarity-color: #c084fc;
+}
+
+.rarity_legendary {
+    --rarity-color: #fbbf24;
+}
+
+.rarity_common.rarityDot {
+    color: #8a8a8a;
+    border-color: rgba(138, 138, 138, 0.3);
+    background: rgba(138, 138, 138, 0.08);
+}
+
+.rarity_uncommon.rarityDot {
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.3);
+    background: rgba(74, 222, 128, 0.08);
+}
+
+.rarity_rare.rarityDot {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.08);
+}
+
+.rarity_epic.rarityDot {
+    color: #c084fc;
+    border-color: rgba(192, 132, 252, 0.3);
+    background: rgba(192, 132, 252, 0.08);
+}
+
+.rarity_legendary.rarityDot {
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.08);
+}
+
+.rarityText_common {
+    color: #8a8a8a;
+}
+
+.rarityText_uncommon {
+    color: #4ade80;
+}
+
+.rarityText_rare {
+    color: #38bdf8;
+}
+
+.rarityText_epic {
+    color: #c084fc;
+}
+
+.rarityText_legendary {
+    color: #fbbf24;
+}
+
+.rarityBar_common {
+    background: linear-gradient(90deg, #8a8a8a, #aaa);
+}
+
+.rarityBar_uncommon {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.rarityBar_rare {
+    background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+}
+
+.rarityBar_epic {
+    background: linear-gradient(90deg, #a855f7, #c084fc);
+}
+
+.rarityBar_legendary {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+/* ── Inventory ── */
+.inventorySection {
+    margin-top: var(--space-6);
+}
+
+.inventoryTitle {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: var(--color-text-pixel);
+    text-align: center;
+    margin-bottom: var(--space-5);
+    text-transform: uppercase;
+}
+
+/* ── Category Tabs ── */
+.categoryTabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    flex-wrap: wrap;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    background: rgba(44, 44, 62, 0.4);
+    border: 2px solid rgba(139, 172, 15, 0.1);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    color: var(--color-text-secondary);
+}
+
+.tab:hover {
+    border-color: rgba(139, 172, 15, 0.3);
+    background: rgba(44, 44, 62, 0.6);
+}
+
+.tabActive {
+    border-color: var(--gb-light) !important;
+    background: rgba(139, 172, 15, 0.1) !important;
+    color: var(--color-text-pixel) !important;
+}
+
+.tabIcon {
+    display: flex;
+    align-items: center;
+}
+
+.tabLabel {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabCount {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: var(--gbc-gold);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1px 5px;
+    border-radius: 2px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* ── Inventory Grid ── */
+.inventoryGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-3);
+    perspective: 800px;
+}
+
+.inventorySlot {
+    position: relative;
+    border: 2px solid rgba(139, 172, 15, 0.1);
+    border-radius: var(--radius-md);
+    background: rgba(26, 26, 46, 0.5);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    overflow: hidden;
+}
+
+.inventorySlot:hover {
+    border-color: var(--rarity-color, rgba(139, 172, 15, 0.3));
+    background: rgba(44, 44, 62, 0.6);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        0 0 16px color-mix(in srgb, var(--rarity-color, #8bac0f) 15%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.slotSelected {
+    border-color: var(--rarity-color, var(--gb-light)) !important;
+    animation: selectedBreath 2s ease-in-out infinite;
+}
+
+@keyframes selectedBreath {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 1px var(--rarity-color, var(--gb-light)),
+            0 4px 20px rgba(0, 0, 0, 0.4),
+            0 0 12px color-mix(in srgb, var(--rarity-color, #8bac0f) 20%, transparent);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 2px var(--rarity-color, var(--gb-light)),
+            0 4px 24px rgba(0, 0, 0, 0.5),
+            0 0 24px color-mix(in srgb, var(--rarity-color, #8bac0f) 30%, transparent);
+    }
+}
+
+/* Rarity top bar */
+.slotRarityBar {
+    height: 2px;
+    width: 100%;
+    background: var(--rarity-color, rgba(139, 172, 15, 0.2));
+    opacity: 0.6;
+}
+
+.inventorySlot:hover .slotRarityBar,
+.slotSelected .slotRarityBar {
+    opacity: 1;
+}
+
+.slotInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-2) var(--space-3);
+}
+
+.slotIcon {
+    font-family: var(--font-pixel), monospace;
+    font-size: 1.1rem;
+    color: var(--color-text-pixel);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139, 172, 15, 0.06);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(139, 172, 15, 0.1);
+    transition: border-color var(--duration-fast), background var(--duration-fast);
+}
+
+.inventorySlot:hover .slotIcon {
+    border-color: var(--rarity-color, rgba(139, 172, 15, 0.3));
+    background: rgba(139, 172, 15, 0.1);
+}
+
+.slotName {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.slotBar {
+    width: 100%;
+    height: 3px;
+    background: rgba(15, 56, 15, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.slotBarFill {
+    height: 100%;
+    background: var(--rarity-color, linear-gradient(90deg, var(--gbc-teal), #00d4a8));
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slotXP {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.45rem;
+    color: var(--rarity-color, var(--color-text-secondary));
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Legendary shimmer */
+.rarity_legendary .slotIcon {
+    position: relative;
+    overflow: hidden;
+}
+
+.rarity_legendary .slotIcon::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(45deg,
+            transparent 40%,
+            rgba(251, 191, 36, 0.15) 50%,
+            transparent 60%);
+    animation: legendaryShimmer 3s ease-in-out infinite;
+}
+
+@keyframes legendaryShimmer {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* ── Detail Panel ── */
+.detailPanel {
+    margin-top: var(--space-5);
+    animation: panelSlideUp 0.3s ease-out;
+}
+
+.panelInner {
+    background: linear-gradient(145deg, rgba(44, 44, 62, 0.6), rgba(26, 26, 46, 0.8));
+    border: 2px solid rgba(139, 172, 15, 0.15);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+    border-top: 3px solid var(--rarity-color, rgba(139, 172, 15, 0.3));
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    gap: var(--space-3);
+}
+
+.panelTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.panelIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139, 172, 15, 0.08);
+    border: 1px solid rgba(139, 172, 15, 0.15);
+    border-radius: var(--radius-sm);
+    color: var(--rarity-color, var(--gb-light));
+}
+
+.panelName {
+    font-family: var(--font-pixel), monospace;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    color: var(--color-text-pixel);
+    text-transform: uppercase;
+    display: block;
+}
+
+.panelRarity {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 2px;
+}
+
+.panelStars {
+    color: var(--gbc-gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.panelBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.panelStat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.panelStatLabel {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.55rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 45px;
+}
+
+.panelBar {
+    flex: 1;
+    height: 8px;
+    background: rgba(15, 56, 15, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.panelBarFill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panelStatValue {
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.6rem;
+    color: var(--color-text-primary);
+    min-width: 45px;
+    text-align: right;
+}
+
+.panelMeta {
+    display: flex;
+    gap: var(--space-4);
+    font-family: var(--font-pixel-small), monospace;
+    font-size: 0.55rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panelCategory {
+    color: var(--rarity-color, var(--gbc-teal));
+}
+
+.panelFlavor {
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+    padding-top: var(--space-2);
+    border-top: 1px solid rgba(139, 172, 15, 0.08);
+}
+
+@keyframes panelSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .inventoryGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-2);
+    }
+
+    .slotInner {
+        padding: var(--space-2);
+    }
+
+    .slotIcon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+
+    .slotName {
+        font-size: 0.4rem;
+    }
+
+    .slotXP {
+        font-size: 0.4rem;
+    }
+
+    .categoryTabs {
+        gap: var(--space-1);
+    }
+
+    .tab {
+        padding: var(--space-1) var(--space-2);
+    }
+
+    .tabLabel {
+        display: none;
+    }
+
+    .tabCount {
+        font-size: 0.45rem;
+    }
+
+    .rarityLegend {
+        gap: var(--space-1);
+    }
+
+    .rarityDot {
+        font-size: 0.4rem;
+        padding: 1px 4px;
+    }
+
+    .statsHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .xpCounter {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .panelInner {
+        padding: var(--space-3);
+    }
+
+    .panelHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ── Tablet ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .inventoryGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ── Large screens ── */
+@media (min-width: 1280px) {
+    .inventoryGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
