@@ -3,6 +3,8 @@
 import { useEffect, useRef, useCallback, useState } from "react";
 import styles from "./ProjectShowcase.module.css";
 import PixelIcon from "./PixelIcon";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface Project {
     id: number;
@@ -23,15 +25,15 @@ const projects: Project[] = [
     {
         id: 1,
         world: "2-1",
-        title: "AuthChecker",
-        tagline: "Medicine Authenticator",
+        title: "Medify",
+        tagline: "AI-Powered Medicine Authenticator",
         description:
-            "AI/OCR-based mobile app for counterfeit-medicine detection using React Native and FastAPI. Engineered an OCR pipeline with Tesseract/PaddleOCR boosting text extraction accuracy by 35%. Features database matching, barcode checks, and 92%+ authentication accuracy.",
+            "Built an AI-powered counterfeit medicine detection app using React Native, FastAPI, and PyTorch (EfficientNet-B3) with 92%+ accuracy, supporting 1000+ scans; implemented secure PostgreSQL APIs, JWT auth, Docker deployment, and EAS mobile builds.",
         tech: ["React Native", "FastAPI", "OCR", "PostgreSQL", "Docker"],
         difficulty: 5,
         duration: "Oct 2025",
         demoUrl: "#",
-        codeUrl: "https://github.com",
+        codeUrl: "https://github.com/an1ket030/auth-checker.git",
         screenTheme: "medical",
     },
     {
@@ -45,7 +47,7 @@ const projects: Project[] = [
         difficulty: 4,
         duration: "Nov 2025",
         demoUrl: "#",
-        codeUrl: "https://github.com",
+        codeUrl: "https://github.com/an1ket030/CareConnect-HMS.git",
         screenTheme: "hospital",
     },
     {
@@ -58,8 +60,8 @@ const projects: Project[] = [
         tech: ["React", "Node.js", "Express", "REST APIs"],
         difficulty: 4,
         duration: "Jun 2025",
-        demoUrl: "#",
-        codeUrl: "https://github.com",
+        demoUrl: "https://popscopeexpress.web.app",
+        codeUrl: "https://github.com/an1ket030/popscopeexpress.git",
         screenTheme: "news",
     },
     {
@@ -73,7 +75,7 @@ const projects: Project[] = [
         difficulty: 3,
         duration: "Apr 2025",
         demoUrl: "#",
-        codeUrl: "https://github.com",
+        codeUrl: "https://github.com/an1ket030/HappiCards.git",
         screenTheme: "cards",
     },
     {
@@ -437,9 +439,7 @@ export default function ProjectShowcase() {
     const [activeNode, setActiveNode] = useState<number>(0);
 
     useEffect(() => {
-        const loadGsap = async () => {
-            const { gsap } = await import("gsap");
-            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        const loadGsap = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             // Section title entrance

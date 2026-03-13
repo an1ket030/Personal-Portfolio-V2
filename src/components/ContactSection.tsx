@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef, type FormEvent, useCallback } from "react";
 import styles from "./ContactSection.module.css";
 import PixelIcon from "./PixelIcon";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const socialLinks = [
     { name: "GitHub", icon: "github", url: "https://github.com", handle: "@aniket" },
@@ -19,9 +21,7 @@ export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const loadGsap = async () => {
-            const { gsap } = await import("gsap");
-            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        const loadGsap = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;
@@ -102,22 +102,43 @@ export default function ContactSection() {
         return Object.keys(newErrors).length === 0;
     }, [formData]);
 
-    const handleSubmit = useCallback((e: FormEvent) => {
+    const handleSubmit = useCallback(async (e: FormEvent) => {
         e.preventDefault();
         if (!validate()) return;
 
         setCoinInserted(true);
         setFormState("sending");
 
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message');
+            }
+
             setFormState("success");
             setFormData({ name: "", email: "", message: "" });
+            
             setTimeout(() => {
                 setFormState("idle");
                 setCoinInserted(false);
             }, 4000);
-        }, 2000);
-    }, [validate]);
+        } catch (error) {
+            console.error("Email error:", error);
+            setFormState("error");
+            setCoinInserted(false);
+            
+            setTimeout(() => {
+                setFormState("idle");
+            }, 4000);
+        }
+    }, [formData, validate]);
 
     return (
         <section id="contact" className={`section ${styles.contact}`} ref={sectionRef}>

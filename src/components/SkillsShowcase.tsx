@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "./SkillsShowcase.module.css";
 import PixelIcon from "./PixelIcon";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // ── Types ──
 type Rarity = "common" | "uncommon" | "rare" | "epic" | "legendary";
@@ -145,9 +147,7 @@ export default function SkillsShowcase() {
     useEffect(() => {
         if (!animatedBars) return;
 
-        const loadGsap = async () => {
-            const { gsap } = await import("gsap");
-            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        const loadGsap = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;

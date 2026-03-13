@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const roles = [
     "Full-Stack Developer",
@@ -317,9 +319,7 @@ export default function HeroSection() {
 
     // ── GSAP animations ──
     useEffect(() => {
-        const loadGsap = async () => {
-            const { gsap } = await import("gsap");
-            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        const loadGsap = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const el = contentRef.current;

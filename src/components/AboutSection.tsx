@@ -5,6 +5,8 @@ import Image from "next/image";
 import styles from "./AboutSection.module.css";
 import PixelIcon from "./PixelIcon";
 import { triggerSfx } from "./SoundManager";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const achievements = [
     {
@@ -164,9 +166,7 @@ export default function AboutSection() {
     useEffect(() => {
         if (!bioRevealed) return;
 
-        const loadGsap = async () => {
-            const { gsap } = await import("gsap");
-            const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+        const loadGsap = () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;
