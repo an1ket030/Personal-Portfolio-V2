@@ -21,7 +21,7 @@ export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        const loadGsap = () => {
+        let ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;
@@ -86,9 +86,9 @@ export default function ContactSection() {
                     scrollTrigger: { trigger: footer, start: "top 95%" },
                 });
             }
-        };
+        }, sectionRef);
 
-        loadGsap();
+        return () => ctx.revert();
     }, []);
 
     const validate = useCallback(() => {

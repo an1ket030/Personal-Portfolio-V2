@@ -439,7 +439,7 @@ export default function ProjectShowcase() {
     const [activeNode, setActiveNode] = useState<number>(0);
 
     useEffect(() => {
-        const loadGsap = () => {
+        let ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
             // Section title entrance
@@ -548,9 +548,9 @@ export default function ProjectShowcase() {
                     },
                 });
             });
-        };
+        }, sectionRef);
 
-        loadGsap();
+        return () => ctx.revert();
     }, []);
 
     return (

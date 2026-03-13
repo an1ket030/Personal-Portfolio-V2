@@ -147,7 +147,7 @@ export default function SkillsShowcase() {
     useEffect(() => {
         if (!animatedBars) return;
 
-        const loadGsap = () => {
+        let ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;
@@ -210,9 +210,9 @@ export default function SkillsShowcase() {
                     delay: 0.7 + i * 0.04,
                 });
             });
-        };
+        }, sectionRef);
 
-        loadGsap();
+        return () => ctx.revert();
     }, [animatedBars]);
 
     const filteredSkills =

@@ -319,33 +319,39 @@ export default function HeroSection() {
 
     // ── GSAP animations ──
     useEffect(() => {
+        let ctx: gsap.Context;
         const loadGsap = () => {
-            gsap.registerPlugin(ScrollTrigger);
+            ctx = gsap.context(() => {
+                gsap.registerPlugin(ScrollTrigger);
 
-            const el = contentRef.current;
-            if (!el) return;
+                const el = contentRef.current;
+                if (!el) return;
 
-            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+                const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-            tl.fromTo(el.querySelector(`.${styles.greeting}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 })
-                .fromTo(el.querySelector(`.${styles.name}`), { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, "-=0.2")
-                .fromTo(el.querySelector(`.${styles.roleContainer}`), { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3")
-                .fromTo(el.querySelector(`.${styles.tagline}`), { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
-                .fromTo(el.querySelector(`.${styles.characterImage}`), { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.2")
-                .fromTo(el.querySelector(`.${styles.statsRow}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
-                .fromTo(el.querySelector(`.${styles.actions}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2");
+                tl.fromTo(el.querySelector(`.${styles.greeting}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 })
+                    .fromTo(el.querySelector(`.${styles.name}`), { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, "-=0.2")
+                    .fromTo(el.querySelector(`.${styles.roleContainer}`), { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3")
+                    .fromTo(el.querySelector(`.${styles.tagline}`), { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
+                    .fromTo(el.querySelector(`.${styles.characterImage}`), { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.2")
+                    .fromTo(el.querySelector(`.${styles.statsRow}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
+                    .fromTo(el.querySelector(`.${styles.actions}`), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2");
 
-            // Parallax on scroll
-            if (sectionRef.current) {
-                gsap.to(el.querySelector(`.${styles.heroInner}`), {
-                    y: 80, opacity: 0, ease: "none",
-                    scrollTrigger: { trigger: sectionRef.current, start: "40% top", end: "bottom top", scrub: 1 },
-                });
-            }
+                // Parallax on scroll
+                if (sectionRef.current) {
+                    gsap.to(el.querySelector(`.${styles.heroInner}`), {
+                        y: 80, opacity: 0, ease: "none",
+                        scrollTrigger: { trigger: sectionRef.current, start: "40% top", end: "bottom top", scrub: 1 },
+                    });
+                }
+            }, sectionRef);
         };
 
         const timer = setTimeout(() => loadGsap(), 100);
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            if (ctx) ctx.revert();
+        };
     }, []);
 
     return (

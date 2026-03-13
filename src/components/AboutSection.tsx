@@ -36,7 +36,7 @@ const achievements = [
 ];
 
 const hobbies = [
-    { icon: "film", name: "Movies", desc: "Cinephile — Sci-fi & Thriller" },
+    { icon: "film", name: "Movies", desc: "Cinephile" },
     { icon: "football", name: "Football", desc: "Weekend warrior" },
     { icon: "gamepad", name: "Video Games", desc: "RPGs & Strategy" },
     { icon: "book", name: "Reading", desc: "Sci-fi & Philosophy" },
@@ -166,7 +166,7 @@ export default function AboutSection() {
     useEffect(() => {
         if (!bioRevealed) return;
 
-        const loadGsap = () => {
+        let ctx = gsap.context(() => {
             gsap.registerPlugin(ScrollTrigger);
 
             const section = sectionRef.current;
@@ -268,9 +268,9 @@ export default function AboutSection() {
                     delay: i * 0.08,
                 });
             });
-        };
+        }, sectionRef);
 
-        loadGsap();
+        return () => ctx.revert();
     }, [bioRevealed]);
 
     const skipTypewriter = useCallback(() => {
@@ -444,7 +444,7 @@ export default function AboutSection() {
 
                     {/* Resume Download */}
                     <div className={styles.resumeAction}>
-                        <a href="#" className="btn btn-primary">
+                        <a href="/images/Resume.pdf" download="Aniket_Resume.pdf" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
                             <PixelIcon name="save" size={14} color="currentColor" /> DOWNLOAD RESUME
                         </a>
                     </div>
